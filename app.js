@@ -5,8 +5,11 @@ const app = express()
 //导入cors 中间件 用于跨域处理
 const cors = require('cors');
 
-//导入路由模块
+//导入用户路由模块
 const userRouter = require('./router/user')
+
+//导入用户信息模块
+const userInfoRouter = require('./router/userinfo')
 
 //导入需要检验数据的对象模块
 const joi = require('joi')
@@ -42,6 +45,8 @@ app.use(expressJWT({secret: config.jwtSecretKey}).unless({path:[/^\/api\//]}))
 //全局注册路由模块中间件
 app.use('/api', userRouter)
 
+//全局注册用户信息路由中间件
+app.use('/my', userInfoRouter)
 
 //在全局路由中间件之后定义数据校验的异常处理中间件
 app.use((err, req, res, next) => {
@@ -56,7 +61,7 @@ app.use((err, req, res, next) => {
 const port = 3001
 
 app.get('/', (req, res) => res.send('Hello World!'))
-app.listen(port, () => console.log(`Example app listening on port port!`))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 
 
