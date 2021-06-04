@@ -14,6 +14,9 @@ const userInfoRouter = require('./router/userinfo')
 //导入文章相关模块
 const artCate = require('./router/artcate')
 
+//导入文章内容相关模块
+const article = require('./router/article')
+
 //导入需要检验数据的对象模块
 const joi = require('joi')
 
@@ -29,6 +32,9 @@ app.use(cors());
 
 //使用express内置中间件配置解析表单数据
 app.use(express.urlencoded({ extended:false }))
+
+//托管静态资源
+app.use('/uploads', express.static('./uploads'))
 
 //定义全局的错误处理函数
 app.use(function(req, res, next){
@@ -55,6 +61,9 @@ app.use('/my', userInfoRouter)
 //挂载文章相关的接口中间
 app.use('/my/article', artCate)
 
+//新增文章相关接口中间件
+app.use('/my/article', article)
+
 
 
 //在全局路由中间件之后定义数据校验的异常处理中间件
@@ -69,7 +78,7 @@ app.use((err, req, res, next) => {
 
 const port = 3001
 
-app.get('/', (req, res) => res.send('Hello World!'))
+// app.get('/', (req, res) => res.send('Hello World!'))
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 
