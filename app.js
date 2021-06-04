@@ -11,6 +11,9 @@ const userRouter = require('./router/user')
 //导入用户信息模块
 const userInfoRouter = require('./router/userinfo')
 
+//导入文章相关模块
+const artCate = require('./router/artcate')
+
 //导入需要检验数据的对象模块
 const joi = require('joi')
 
@@ -48,6 +51,11 @@ app.use('/api', userRouter)
 
 //全局注册用户信息路由中间件
 app.use('/my', userInfoRouter)
+
+//挂载文章相关的接口中间
+app.use('/my/article', artCate)
+
+
 
 //在全局路由中间件之后定义数据校验的异常处理中间件
 app.use((err, req, res, next) => {
