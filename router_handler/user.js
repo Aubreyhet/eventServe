@@ -48,7 +48,7 @@ let reguser = (req, res) =>{
 }
 
 
-//注册新用户的函数
+
 let login = (req, res) =>{
     // res.send('登录模块可以加载')
     //接收req表单数据

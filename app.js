@@ -17,6 +17,9 @@ const artCate = require('./router/artcate')
 //导入文章内容相关模块
 const article = require('./router/article')
 
+//导入文章内容相关模块
+const artlist = require('./router/artList')
+
 //导入需要检验数据的对象模块
 const joi = require('joi')
 
@@ -63,6 +66,9 @@ app.use('/my/article', artCate)
 
 //新增文章相关接口中间件
 app.use('/my/article', article)
+
+//文章列表相关接口中间件
+app.use('/my/article', artlist)
 
 
 

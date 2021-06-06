@@ -7,7 +7,7 @@ const bcryptjs = require('bcryptjs')
 //获取用户信息处理函数
 let getUserInfo = (req, res) => {
     //定义查询用户信息sql
-    let sql = `select username, nickname, email, user_pic from ev_users where id=?`;
+    let sql = `select id, username, nickname, email, user_pic from ev_users where id=?`;
     //调用数据库处理函数
     db.query(sql, req.user.id, (err, data) => {
         //如果发生错误将错误抛出

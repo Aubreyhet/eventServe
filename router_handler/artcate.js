@@ -11,7 +11,7 @@ let getArtCates = (req, res) => {
         res.send({
             status: 0,
             message:'文章分类数据请求成功',
-            data: data[0]
+            data: data
         })
     })
 }
